@@ -1,13 +1,15 @@
-import { Text, View } from "react-native";
-import { FlatList } from "react-native-gesture-handler";
-import { Contact } from "../../Models";
+import { FlatList, Text, TouchableWithoutFeedback, View } from "react-native";
+import { Contact } from "../../models";
+import Divider from "../../components/Divider";
+import { Colors } from "../../styles/colors";
+import ContactInfos from "../../components/Contact";
 
 export default function ContactsScreen() {
-  const contcts: Contact[] = [
+  const contacts: Contact[] = [
     {
       id: 1,
       description: "menina chata",
-      name: "Gabriela Mangili",
+      name: "Gabi Mangili",
       user_id: 0,
       emails: [
         { id: 1, email: "gabriela@gmail.com", user_id: 2, contact_id: 2 },
@@ -39,13 +41,95 @@ export default function ContactsScreen() {
           user_id: 1,
           description: "número de celular",
         },
+        {
+          contact_id: 1,
+          id: 1,
+          phone: "11123123123",
+          user_id: 1,
+          description: "número de celular",
+        },
+      ],
+    },
+    {
+      id: 2,
+      description: "o que usa boné",
+      name: "Lucas Ferrari",
+      user_id: 0,
+      emails: [
+        { id: 2, email: "lucas@gmail.com", user_id: 3, contact_id: 3 },
+        {
+          id: 4,
+          email: "lucas.ferrari@gmail.com",
+          user_id: 4,
+          contact_id: 4,
+        },
+      ],
+      addresses: [
+        {
+          city: "Marília",
+          contact_id: 2,
+          id: 2,
+          neighborhood: "Bairro Univem",
+          number: "123",
+          postal_code: "17452733",
+          state: "sp",
+          street: "Rua dos bobos",
+          user_id: 3,
+        },
+      ],
+      phones: [
+        {
+          contact_id: 2,
+          id: 2,
+          phone: "14111111111",
+          user_id: 2,
+          description: "número de celular",
+        },
       ],
     },
   ];
   return (
-    <View>
-      <Text>Contatos</Text>
-      <FlatList data={} renderItem={} />
-    </View>
+    <TouchableWithoutFeedback>
+      <View style={{ flex: 1, padding: 20, backgroundColor: "white" }}>
+        <View style={{ flex: 1, gap: 16 }}>
+          <Text style={{ fontSize: 20, fontWeight: "600" }}>Contatos</Text>
+          <View>
+            <FlatList
+              data={contacts}
+              ItemSeparatorComponent={({}) => (
+                <View style={{ padding: 8 }}>
+                  <Divider />
+                </View>
+              )}
+              renderItem={({ item, index }) => (
+                <View style={{ padding: 8, gap: 16 }}>
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      color: Colors.primary,
+                      fontWeight: "700",
+                    }}
+                  >
+                    {item.name}
+                  </Text>
+                  <ContactInfos contact={item} />
+                </View>
+              )}
+            />
+          </View>
+        </View>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
+/**<View>
+      <Text>Contatos</Text>
+      <FlatList
+        data={contacts}
+        renderItem={({ item, index }) => (
+          <View style={{ padding: 8 }}>
+            <Text>{item.name}</Text>
+          </View>
+        )}
+      />
+    </View> */

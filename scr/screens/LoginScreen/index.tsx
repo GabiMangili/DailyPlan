@@ -1,9 +1,9 @@
 import { View, Text, Keyboard, TouchableWithoutFeedback } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Input from "../components/Input";
-import TouchableCustom from "../components/TouchableCustom";
-import Button from "../components/Button";
-import { Colors } from "../styles/colors";
+import Input from "../../components/Input";
+import TouchableCustom from "../../components/TouchableCustom";
+import Button from "../../components/Button";
+import { Colors } from "../../styles/colors";
 import { useReducer, useState } from "react";
 import { Octicons } from "@expo/vector-icons";
 
