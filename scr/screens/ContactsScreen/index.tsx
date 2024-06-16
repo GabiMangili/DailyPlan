@@ -1,10 +1,21 @@
-import { FlatList, Text, TouchableWithoutFeedback, View } from "react-native";
+import {
+  FlatList,
+  Linking,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import { Contact } from "../../models";
 import Divider from "../../components/Divider";
 import { Colors } from "../../styles/colors";
-import ContactInfos from "../../components/Contact";
+import ContactInfos from "../../components/ContactInfos";
+import Button, { IconButton } from "../../components/Button";
+import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ContactsScreen() {
+  const navigation = useNavigation<any>();
+
   const contacts: Contact[] = [
     {
       id: 1,
@@ -88,6 +99,7 @@ export default function ContactsScreen() {
       ],
     },
   ];
+
   return (
     <TouchableWithoutFeedback>
       <View style={{ flex: 1, padding: 20, backgroundColor: "white" }}>
@@ -118,6 +130,13 @@ export default function ContactsScreen() {
             />
           </View>
         </View>
+        <IconButton
+          variant="contained"
+          onPress={() => {
+            navigation.navigate("AddContactScreen");
+          }}
+          icon={<AntDesign name="plus" size={20} color="white" />}
+        />
       </View>
     </TouchableWithoutFeedback>
   );

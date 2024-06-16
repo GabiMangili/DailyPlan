@@ -17,4 +17,5 @@ export const allStyles = StyleSheet.create({
     backgroundColor: "transparent",
     alignItems: "center",
   },
+  defaultScreen: { flex: 1, padding: 20, backgroundColor: "white" },
 });

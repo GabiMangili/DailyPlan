@@ -1,15 +1,18 @@
 import { DimensionValue, StyleProp, View, ViewStyle } from "react-native";
+import { Colors } from "../../styles/colors";
 
 interface DividerProps {
   heigth?: DimensionValue;
   width?: DimensionValue;
   style?: StyleProp<ViewStyle>;
+  color?: keyof typeof Colors;
 }
 
 export default function Divider({
   heigth = 1,
   width = "100%",
   style,
+  color,
 }: DividerProps) {
   return (
     <View
@@ -17,7 +20,7 @@ export default function Divider({
         {
           height: heigth,
           borderColor: "gray",
-          backgroundColor: "gray",
+          backgroundColor: color ? Colors[color] : "gray",
           width: "100%",
         },
         style,

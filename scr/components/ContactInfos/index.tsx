@@ -23,6 +23,7 @@ export default function ContactInfos({ contact }: ContactInfoProps) {
           },
           {
             label: "E-mails",
+            copy: true,
             value: contact.emails?.map((email) => {
               return email.email;
             }),

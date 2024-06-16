@@ -3,6 +3,7 @@ import { Colors } from "../styles/colors";
 import { StyleProp, TextInputProps, ViewStyle } from "react-native";
 import { ReactNode } from "react";
 import { TouchableOpacityProps } from "react-native-gesture-handler";
+import { TextInputMaskTypeProp } from "react-native-masked-text";
 
 type ColorsType = keyof typeof Colors;
 
@@ -18,6 +19,7 @@ export interface InputProps extends TextInputProps {
 export interface InputDefaultProps extends InputProps {
   suffixIcon?: JSX.Element;
   onPressIcon?: Function;
+  maskType?: TextInputMaskTypeProp;
 }
 
 export interface CheckBox extends InputProps {
