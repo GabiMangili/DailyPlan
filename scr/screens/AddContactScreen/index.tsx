@@ -252,7 +252,7 @@ export default function AddContactScreen() {
             navigation.navigate("RegisterScreen");
           }}
         >
-          Cadastrar-se
+          Adicionar
         </Button>
       </View>
     </View>
