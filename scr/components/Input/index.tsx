@@ -37,6 +37,7 @@ export default function Input({
         unit: "R$",
       };
     case "cel-phone":
+      console.log("asdasdasasdasdasd");
       options = {
         maskType: "BRL",
         withDDD: true,
@@ -46,7 +47,7 @@ export default function Input({
       options = { format: "DD/MM/YYYY" };
   }
 
-  function getTextInput() {
+  function InputCustom() {
     if (maskType === "custom") {
       return <TextInput placeholder={placeholder} {...props} />;
     } else {
@@ -68,7 +69,7 @@ export default function Input({
         {required && <Text style={{ color: "red" }}> *</Text>}
       </View>
       <View style={[allStyles.inputContainer, borderColor]}>
-        <TextInput placeholder={placeholder} {...props} />
+        <InputCustom />
         <TouchableCustom onPress={() => onPressIcon && onPressIcon()}>
           {suffixIcon && suffixIcon}
         </TouchableCustom>

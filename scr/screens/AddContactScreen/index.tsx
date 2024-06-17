@@ -5,7 +5,7 @@ import { Header } from "../../components/Header";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { Colors } from "../../styles/colors";
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import Button from "../../components/Button";
 import Divider from "../../components/Divider";
 import {
@@ -17,14 +17,91 @@ import {
 export default function AddContactScreen() {
   const navigation = useNavigation<any>();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useReducer(
+    (_: any, value: any) => {
+      const isValid = value != "";
+      return { value: value, valid: isValid };
+    },
+    { value: "", valid: false }
+  );
+
+  const [description, setDescription] = useReducer(
+    (_: any, value: any) => {
+      const isValid = value != "";
+      return { value: value, valid: isValid };
+    },
+    { value: "", valid: false }
+  );
+
+  const [phoneNumbers, setPhoneNumbers] = useReducer(
+    (_: any, value: any) => {
+      return { value: value, valid: true };
+    },
+    { value: "", valid: false }
+  );
+
+  const [emails, setemails] = useReducer(
+    (_: any, value: any) => {
+      const isValid = value != "";
+      return { value: value, valid: isValid };
+    },
+    { value: "", valid: false }
+  );
+
+  const [cep, setCep] = useReducer(
+    (_: any, value: any) => {
+      const isValid = value != "";
+      return { value: value, valid: isValid };
+    },
+    { value: "", valid: false }
+  );
+
+  const [street, setStreet] = useReducer(
+    (_: any, value: any) => {
+      const isValid = value != "";
+      return { value: value, valid: isValid };
+    },
+    { value: "", valid: false }
+  );
+
+  const [neighborhood, setNeighborhood] = useReducer(
+    (_: any, value: any) => {
+      const isValid = value != "";
+      return { value: value, valid: isValid };
+    },
+    { value: "", valid: false }
+  );
+
+  const [addressNumber, setAddressNumber] = useReducer(
+    (_: any, value: any) => {
+      const isValid = value != "";
+      return { value: value, valid: isValid };
+    },
+    { value: "", valid: false }
+  );
+
+  const [city, setCity] = useReducer(
+    (_: any, value: any) => {
+      const isValid = value != "";
+      return { value: value, valid: isValid };
+    },
+    { value: "", valid: false }
+  );
+
+  const [state, setState] = useReducer(
+    (_: any, value: any) => {
+      const isValid = value != "";
+      return { value: value, valid: isValid };
+    },
+    { value: "", valid: false }
+  );
+
   const [buttonPressed, setButtonPressed] = useState(false);
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header
-        title="CADASTRO"
+        title="ADICIONAR CONTATO"
         iconLeft={
           <AntDesign name="arrowleft" size={18} color={Colors.primary} />
         }
@@ -59,7 +136,12 @@ export default function AddContactScreen() {
           <Divider color="disabled" />
 
           <Text style={{ fontWeight: "600", fontSize: 16 }}>Contato</Text>
-
+          <Input
+            required
+            label="Número"
+            placeholder="Ex.: +55 (99) 99999-9999"
+            onChangeText={(val) => {}}
+          />
           <View
             style={{
               flexDirection: "row",
@@ -69,24 +151,10 @@ export default function AddContactScreen() {
           >
             <Input
               required
-              label="Número"
-              placeholder="Ex.: +55 (99) 99999-9999"
-              keyboardType="numeric"
-              maskType="cel-phone"
-              error={buttonPressed}
-              onChangeText={(val) => {
-                setEmail(val);
-              }}
-            />
-            <Input
-              required
               label="Descrição"
               placeholder="Ex.: Celular"
-              keyboardType="email-address"
               error={buttonPressed}
-              onChangeText={(val) => {
-                setEmail(val);
-              }}
+              onChangeText={(val) => {}}
             />
           </View>
 
@@ -96,9 +164,7 @@ export default function AddContactScreen() {
             placeholder="Digite seu e-mail"
             keyboardType="email-address"
             error={buttonPressed}
-            onChangeText={(val) => {
-              setEmail(val);
-            }}
+            onChangeText={(val) => {}}
           />
 
           <Divider color="disabled" />
