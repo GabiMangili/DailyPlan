@@ -13,11 +13,14 @@ import {
   TextInputMaskOptionProp,
   TextInputMaskTypeProp,
 } from "react-native-masked-text";
+import { UserService } from "../../services/userService";
+import { ContactService } from "../../services/contactService";
 
 export default function AddContactScreen() {
   const navigation = useNavigation<any>();
 
   const [name, setName] = useReducer(
+    //usereducer é usado para atualizar o estado da variável de maneira mais rapida que o usestate
     (_: any, value: any) => {
       const isValid = value != "";
       return { value: value, valid: isValid };
@@ -40,7 +43,14 @@ export default function AddContactScreen() {
     { value: "", valid: false }
   );
 
-  const [emails, setemails] = useReducer(
+  const [phoneDescription, setPhoneDescription] = useReducer(
+    (_: any, value: any) => {
+      return { value: value, valid: true };
+    },
+    { value: "", valid: false }
+  );
+
+  const [email, setEmail] = useReducer(
     (_: any, value: any) => {
       const isValid = value != "";
       return { value: value, valid: isValid };
@@ -116,7 +126,6 @@ export default function AddContactScreen() {
             label="Nome"
             placeholder="Digite seu nome"
             /* error={buttonPressed && !name.valid} */ //verificando se o botão foi pressionado para não mostrar mensagens de erro antes de apertar o botão
-            errorMessage={"Campo obrigatório"}
             onChangeText={(val) => {
               setName(val);
             }}
@@ -127,9 +136,8 @@ export default function AddContactScreen() {
             multiline
             numberOfLines={7}
             textAlignVertical="top"
-            onChangeText={(val) => {}}
-            onPressIcon={() => {
-              console.log("pressionado");
+            onChangeText={(val) => {
+              setDescription(val);
             }}
           />
 
@@ -139,30 +147,30 @@ export default function AddContactScreen() {
           <Input
             required
             label="Número"
+            keyboardType="numeric"
             placeholder="Ex.: +55 (99) 99999-9999"
-            onChangeText={(val) => {}}
-          />
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              gap: 8,
+            onChangeText={(val) => {
+              setPhoneNumbers(val);
             }}
-          >
-            <Input
-              label="Descrição"
-              placeholder="Ex.: Celular"
-              error={buttonPressed}
-              onChangeText={(val) => {}}
-            />
-          </View>
+          />
+
+          <Input
+            label="Descrição"
+            placeholder="Ex.: Celular"
+            error={buttonPressed}
+            onChangeText={(val) => {
+              setPhoneDescription(val);
+            }}
+          />
 
           <Input
             label="E-mail"
             placeholder="Digite seu e-mail"
             keyboardType="email-address"
             error={buttonPressed}
-            onChangeText={(val) => {}}
+            onChangeText={(val) => {
+              setEmail(val);
+            }}
           />
 
           <Divider color="disabled" />
@@ -174,7 +182,9 @@ export default function AddContactScreen() {
             onPressIcon={() => {
               console.log("pressionado");
             }}
-            onChangeText={(val) => {}}
+            onChangeText={(val) => {
+              setCep(val);
+            }}
           />
 
           <Input
@@ -183,7 +193,9 @@ export default function AddContactScreen() {
             onPressIcon={() => {
               console.log("pressionado");
             }}
-            onChangeText={(val) => {}}
+            onChangeText={(val) => {
+              setStreet(val);
+            }}
           />
 
           <Input
@@ -192,7 +204,9 @@ export default function AddContactScreen() {
             onPressIcon={() => {
               console.log("pressionado");
             }}
-            onChangeText={(val) => {}}
+            onChangeText={(val) => {
+              setNeighborhood(val);
+            }}
           />
           <Input
             label="Número"
@@ -200,7 +214,9 @@ export default function AddContactScreen() {
             onPressIcon={() => {
               console.log("pressionado");
             }}
-            onChangeText={(val) => {}}
+            onChangeText={(val) => {
+              setAddressNumber(val);
+            }}
           />
 
           <Input
@@ -209,7 +225,9 @@ export default function AddContactScreen() {
             onPressIcon={() => {
               console.log("pressionado");
             }}
-            onChangeText={(val) => {}}
+            onChangeText={(val) => {
+              setCity(val);
+            }}
           />
           <Input
             label="Estado"
@@ -217,7 +235,9 @@ export default function AddContactScreen() {
             onPressIcon={() => {
               console.log("pressionado");
             }}
-            onChangeText={(val) => {}}
+            onChangeText={(val) => {
+              setState(val);
+            }}
           />
         </View>
       </ScrollView>

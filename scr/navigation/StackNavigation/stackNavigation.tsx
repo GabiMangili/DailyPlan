@@ -8,10 +8,11 @@ import AddContactScreen from "../../screens/AddContactScreen";
 const Stack = createNativeStackNavigator();
 
 const StackNavigation = () => {
+  //arquivo para navegação em pilhas
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="LoginScreen"
+        initialRouteName="ContactsScreen" //trocar para login screen para iniciar na tela de login
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
