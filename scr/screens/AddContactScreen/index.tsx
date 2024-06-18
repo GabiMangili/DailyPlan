@@ -150,7 +150,6 @@ export default function AddContactScreen() {
             }}
           >
             <Input
-              required
               label="Descrição"
               placeholder="Ex.: Celular"
               error={buttonPressed}
@@ -159,7 +158,6 @@ export default function AddContactScreen() {
           </View>
 
           <Input
-            required
             label="E-mail"
             placeholder="Digite seu e-mail"
             keyboardType="email-address"
@@ -171,7 +169,6 @@ export default function AddContactScreen() {
 
           <Text style={{ fontWeight: "600", fontSize: 16 }}>Endereço</Text>
           <Input
-            required
             label="CEP"
             placeholder="Ex.: 99.999-999"
             onPressIcon={() => {
@@ -181,7 +178,6 @@ export default function AddContactScreen() {
           />
 
           <Input
-            required
             label="Endereço"
             placeholder="Ex.: Rua Higyno Muzy Filho"
             onPressIcon={() => {
@@ -189,58 +185,40 @@ export default function AddContactScreen() {
             }}
             onChangeText={(val) => {}}
           />
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              gap: 8,
+
+          <Input
+            label="Bairro"
+            placeholder="Ex.: Campus"
+            onPressIcon={() => {
+              console.log("pressionado");
             }}
-          >
-            <Input
-              required
-              label="Bairro"
-              placeholder="Ex.: Campus"
-              onPressIcon={() => {
-                console.log("pressionado");
-              }}
-              onChangeText={(val) => {}}
-            />
-            <Input
-              required
-              label="Número"
-              placeholder="Ex.: 123"
-              onPressIcon={() => {
-                console.log("pressionado");
-              }}
-              onChangeText={(val) => {}}
-            />
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              gap: 8,
+            onChangeText={(val) => {}}
+          />
+          <Input
+            label="Número"
+            placeholder="Ex.: 123"
+            onPressIcon={() => {
+              console.log("pressionado");
             }}
-          >
-            <Input
-              required
-              label="Cidade"
-              placeholder="Ex.: Marília"
-              onPressIcon={() => {
-                console.log("pressionado");
-              }}
-              onChangeText={(val) => {}}
-            />
-            <Input
-              required
-              label="Estado"
-              placeholder="Ex.: SP"
-              onPressIcon={() => {
-                console.log("pressionado");
-              }}
-              onChangeText={(val) => {}}
-            />
-          </View>
+            onChangeText={(val) => {}}
+          />
+
+          <Input
+            label="Cidade"
+            placeholder="Ex.: Marília"
+            onPressIcon={() => {
+              console.log("pressionado");
+            }}
+            onChangeText={(val) => {}}
+          />
+          <Input
+            label="Estado"
+            placeholder="Ex.: SP"
+            onPressIcon={() => {
+              console.log("pressionado");
+            }}
+            onChangeText={(val) => {}}
+          />
         </View>
       </ScrollView>
       <View style={{ padding: 20 }}>
@@ -249,7 +227,6 @@ export default function AddContactScreen() {
           onPress={() => {
             console.log("pressionando botão");
             setButtonPressed(true);
-            navigation.navigate("RegisterScreen");
           }}
         >
           Adicionar

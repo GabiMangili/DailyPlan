@@ -63,13 +63,13 @@ export default function Input({
   }
 
   return (
-    <View style={{ width: "100%", flex: 1 }}>
+    <View style={{ width: "100%" }}>
       <View style={{ flexDirection: "row" }}>
         <Text>{label}</Text>
         {required && <Text style={{ color: "red" }}> *</Text>}
       </View>
       <View style={[allStyles.inputContainer, borderColor]}>
-        <InputCustom />
+        <TextInput placeholder={placeholder} {...props} />
         <TouchableCustom onPress={() => onPressIcon && onPressIcon()}>
           {suffixIcon && suffixIcon}
         </TouchableCustom>
