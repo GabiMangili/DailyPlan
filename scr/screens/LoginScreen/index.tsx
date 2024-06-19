@@ -6,9 +6,19 @@ import Button from "../../components/Button";
 import { Colors } from "../../styles/colors";
 import { useReducer, useState } from "react";
 import { Octicons } from "@expo/vector-icons";
+import { UserService } from "../../services/userService";
 
 const LoginScreen = () => {
   const navigation = useNavigation<any>();
+
+  const [email, setEmail] = useReducer(
+    (_: any, value: any) => {
+      const isValid = value != "";
+      return { value: value, valid: isValid };
+    },
+    { value: "", valid: false } //valor inicial
+  );
+
   const [showPassword, setShowPassword] = useState(false);
 
   const [password, setPassword] = useReducer(
@@ -18,6 +28,8 @@ const LoginScreen = () => {
     },
     { value: "", valid: false } //valor inicial
   );
+
+  const userService = UserService.getInstance();
 
   return (
     <View style={{ flex: 1, padding: 20, backgroundColor: "white" }}>
@@ -29,6 +41,9 @@ const LoginScreen = () => {
           label="E-mail"
           placeholder="Digite seu e-mail"
           keyboardType="email-address"
+          onChangeText={(val) => {
+            setEmail(val);
+          }}
         />
         <Input
           required
@@ -66,7 +81,8 @@ const LoginScreen = () => {
         <Button
           color="primary"
           onPress={() => {
-            //navigation.navigate("RegisterScreen");
+            console.log("email: ", email.value, " senha: ", password.value);
+            userService.loginUser(email.value, password.value);
           }}
         >
           Entrar
