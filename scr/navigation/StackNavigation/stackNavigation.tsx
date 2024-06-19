@@ -12,7 +12,7 @@ const StackNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="ContactsScreen" //trocar para login screen para iniciar na tela de login
+        initialRouteName="LoginScreen" //trocar para login screen para iniciar na tela de login
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="LoginScreen" component={LoginScreen} />

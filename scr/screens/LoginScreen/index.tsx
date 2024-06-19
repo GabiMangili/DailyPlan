@@ -9,7 +9,7 @@ import { Octicons } from "@expo/vector-icons";
 
 const LoginScreen = () => {
   const navigation = useNavigation<any>();
-  const [showPassword, setShowPassword] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
 
   const [password, setPassword] = useReducer(
     (_: any, value: any) => {
@@ -36,7 +36,7 @@ const LoginScreen = () => {
           placeholder="Digite sua senha"
           secureTextEntry={showPassword}
           suffixIcon={
-            showPassword ? (
+            !showPassword ? (
               <Octicons name="eye" size={20} color="black" />
             ) : (
               <Octicons name="eye-closed" size={20} color="black" />
@@ -66,7 +66,7 @@ const LoginScreen = () => {
         <Button
           color="primary"
           onPress={() => {
-            navigation.navigate("RegisterScreen");
+            //navigation.navigate("RegisterScreen");
           }}
         >
           Entrar

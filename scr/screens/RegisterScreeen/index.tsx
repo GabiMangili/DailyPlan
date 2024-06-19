@@ -165,7 +165,7 @@ const RegisterScreen = () => {
               required
               label="Senha"
               placeholder="Digite sua senha"
-              secureTextEntry={showPassword}
+              secureTextEntry={!showPassword}
               suffixIcon={
                 showPassword ? (
                   <Octicons name="eye" size={20} color="black" />
@@ -210,7 +210,7 @@ const RegisterScreen = () => {
               required
               label="Digite a nova senha outra vez"
               placeholder="Digite a senha novamente"
-              secureTextEntry={showConfirmPassword}
+              secureTextEntry={!showConfirmPassword}
               errorMessage={
                 !confirmPassword.valid
                   ? "Campo obrigatório"

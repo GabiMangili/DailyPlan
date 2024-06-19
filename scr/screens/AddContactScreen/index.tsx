@@ -146,7 +146,7 @@ export default function AddContactScreen() {
           <Text style={{ fontWeight: "600", fontSize: 16 }}>Contato</Text>
           <Input
             required
-            label="Número"
+            label="Número do contato"
             keyboardType="numeric"
             placeholder="Ex.: +55 (99) 99999-9999"
             onChangeText={(val) => {
@@ -179,6 +179,7 @@ export default function AddContactScreen() {
           <Input
             label="CEP"
             placeholder="Ex.: 99.999-999"
+            keyboardType="numeric"
             onPressIcon={() => {
               console.log("pressionado");
             }}
@@ -211,6 +212,7 @@ export default function AddContactScreen() {
           <Input
             label="Número"
             placeholder="Ex.: 123"
+            keyboardType="numeric"
             onPressIcon={() => {
               console.log("pressionado");
             }}
