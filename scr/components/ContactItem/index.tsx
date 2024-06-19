@@ -1,5 +1,4 @@
 import { Linking, Text, View } from "react-native";
-import Clipboard from "@react-native-clipboard/clipboard";
 import { formatPhoneNumber } from "../../utils";
 import TouchableCustom from "../TouchableCustom";
 import { Feather } from "@expo/vector-icons";
@@ -45,12 +44,6 @@ export default function InfosOsBlock({ onCopy, infos, gap = 8 }: BlockInforOs) {
                 </Text>
                 <View style={{ gap: 5 }}>
                   {valueItem.map((val, itemId) => {
-                    const copyToClipboard = () => {
-                      if (val) {
-                        Clipboard.setString(val);
-                        onCopy && onCopy();
-                      }
-                    };
                     const finalTextValue = val
                       ? item.mask === "phone"
                         ? formatPhoneNumber(val)
@@ -87,21 +80,6 @@ export default function InfosOsBlock({ onCopy, infos, gap = 8 }: BlockInforOs) {
                               />
                             </TouchableCustom>
                           )}
-                          <TouchableCustom
-                            style={{ paddingHorizontal: 8 }}
-                            onPress={() => {
-                              copyToClipboard();
-                              console.log("copiado");
-                            }}
-                          >
-                            {copyValue && !!finalTextValue && (
-                              <Feather
-                                name="copy"
-                                size={16}
-                                color={Colors.primary}
-                              />
-                            )}
-                          </TouchableCustom>
                         </View>
                       </View>
                     );
